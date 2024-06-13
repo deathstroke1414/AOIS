@@ -1,9 +1,8 @@
-﻿#include <iostream>
+#include <iostream>
 #include <vector>
 #include <iomanip>
 #include <cmath>
 #include <string>
-#include <Windows.h>
 
 using namespace std;
 
@@ -56,7 +55,6 @@ bool result(string opz) {
     char chr = 'e' + 1;
     for (int i = 0; i < opz.size(); i++) {
         ch = opz[i];
-        //cout << ch << " ";
         if (ch >= 'a' && ch <= 'e') {
             begin = add(begin, ch);
         }
@@ -67,15 +65,14 @@ bool result(string opz) {
                 begin = del(begin, &ch2);
                 op1 = mas[int(ch1)];
                 op2 = mas[int(ch2)];
-                rez = op2 + op1;
-
+                rez = op2 || op1;
                 break;
             case '&':
                 begin = del(begin, &ch1);
                 begin = del(begin, &ch2);
                 op1 = mas[int(ch1)];
                 op2 = mas[int(ch2)];
-                rez = op2 * op1;
+                rez = op2 && op1;
                 break;
             case '!':
                 begin = del(begin, &ch1);
@@ -87,23 +84,14 @@ bool result(string opz) {
                 begin = del(begin, &ch2);
                 op1 = mas[int(ch1)];
                 op2 = mas[int(ch2)];
-                rez = op2 || !op1;
+                rez = !op1 || op2;
                 break;
             case '-':
                 begin = del(begin, &ch1);
                 begin = del(begin, &ch2);
                 op1 = mas[int(ch1)];
                 op2 = mas[int(ch2)];
-                if (op1 == op2) {
-                    rez = 1;
-                }
-                else if (op2 == 0 and op1 == 1) {
-                    rez = 1;
-                }
-                else {
-                    rez = 0;
-                }
-                //cout << op2 << " = " << op1 << " == " << rez;
+                rez = op1 == op2 || op1 == 0;
                 break;
             }
 
@@ -112,7 +100,6 @@ bool result(string opz) {
             chr++;
         }
     }
-    cout << setw(5) << rez;
     return rez;
 }
 
@@ -141,7 +128,6 @@ void evaluate(string res) {
         if (ss == '&' or ss == '|' or ss == '!' or ss == '>' or ss == '-') {
             while (begin != NULL && prioritet(begin->info) >= prioritet(ss)) {
                 begin = del(begin, &a);
-
                 OutStr += a;
             }
             begin = add(begin, ss);
@@ -152,7 +138,6 @@ void evaluate(string res) {
         begin = del(begin, &a);
         OutStr += a;
     }
-    //cout << "    " << OutStr << "       ";
 }
 
 void printTruthTable(string expression) {
@@ -302,17 +287,13 @@ void printTruthTable(string expression) {
 }
 
 int main() {
-    SetConsoleCP(1251);
-    SetConsoleOutputCP(1251);
     string expression;
-    cout << "Вводим функцию\n";
+    cout << "Enter a boolean expression: ";
     cin >> expression;
-    expression = "a|!(b&c)";
-    cout << endl;
     
     printTruthTable(expression);
     int col = 0;
-    cout << "\nСовершенная дизъюнктивная нормальная форма (СДНФ):\n";
+    cout << "\nSimplified Disjunctive Normal Form (SDNF):\n";
     for (string s : sdnf) {
         col++;
         cout << s;
@@ -321,7 +302,7 @@ int main() {
         }
     }
     col = 0;
-    cout << "\n\nСовершенная конъюнктивная нормальная форма (СKНФ):\n";
+    cout << "\n\nSimplified Conjunctive Normal Form (SKNF):\n";
     for (string s : sknf) {
         cout << s;
         col++;
@@ -329,7 +310,7 @@ int main() {
             cout << " & ";
         }
     }
-    cout << "\n\nЧисловые формы:\n(";
+    cout << "\n\nNumeric Forms:\n(";
     col = 0;
     for (char ch : chk) {
         col++;
@@ -348,7 +329,7 @@ int main() {
         }
     }
     cout << ")|\n";
-    cout << "\n\nИндексная форма:\n";
+    cout << "\n\nIndex Form:\n";
     int rez = 0;
     for (int i = 0; i < ind.size(); i++) {
         cout << ind[i];
