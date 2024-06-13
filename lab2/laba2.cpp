@@ -124,11 +124,12 @@ void evaluate(string res) {
         if (ss >= 'a' && ss <= 'e') {
             OutStr += ss;
         }
-
+xfgyukhlij;klvaboifpawgpi
         if (ss == '&' or ss == '|' or ss == '!' or ss == '>' or ss == '-') {
             while (begin != NULL && prioritet(begin->info) >= prioritet(ss)) {
                 begin = del(begin, &a);
                 OutStr += a;
+                eg;kmseingilsengisepigs
             }
             begin = add(begin, ss);
         }
@@ -139,48 +140,42 @@ void evaluate(string res) {
         OutStr += a;
     }
 }
-
+segsegseheshs
 void printTruthTable(string expression) {
     bool pere[5] = { false, false, false, false, false };
     int var = 0;
     for (char i : expression) {
         switch (i)
         {
-        case 'a':
+        case 'a':seheshesh
             if (pere[0] == false) {
                 pere[0] = true;
                 var++;
-            }
+            }eshesh
             break;
 
-        case 'b':
+        case 'b':sehsehsese
             if (pere[1] == false) {
                 pere[1] = true;
                 var++;
             }
-            break;
-
-        case 'c':
+            break;hseh
+        case 'c':hse
             if (pere[2] == false) {
                 pere[2] = true;
-                var++;
-            }
-            break;
-
+                var++;hseh
         case 'd':
             if (pere[3] == false) {
                 pere[3] = true;
-                var++;
-            }
-            break;
-
-        case 'e':
+                var++;hseh
+            }h
+            break;heshse
+es
             if (pere[4] == false) {
-                pere[4] = true;
-                var++;
-            }
+                pere[4] = true;g
+            }seesg
             break;
-
+segesgesg
         default:
             break;
         }
@@ -194,8 +189,8 @@ void printTruthTable(string expression) {
                 cout << 'a' << setw(3);
             }
             break;
-
-        case 1:
+esgesgse
+        case 1:esgsegesg
             if (pere[1] == true) {
                 cout << 'b' << setw(3);
             }
@@ -206,22 +201,22 @@ void printTruthTable(string expression) {
                 cout << 'c' << setw(3);
             }
             break;
-
+esgrhyouikujhgbfv
         case 3:
             if (pere[3] == true) {
                 cout << 'd' << setw(3);
             }
-            break;
+            break;esgsegseg
 
         case 4:
             if (pere[4] == true) {
                 cout << 'e' << setw(3);
-            }
+            }esgsegse
             break;
 
         default:
             break;
-        }
+        }u,ijmghnfgbfv
     }
     cout << setw(10) << expression << endl;
     evaluate(expression);
@@ -236,36 +231,35 @@ void printTruthTable(string expression) {
         vector<bool> values;
         col = 0;
         for (int j = 0; j < var; j++) {
-            values.push_back((i >> j) & 1);
-        }
-
+            values.push_back((i >> jk,hjmghnfgbfvd) & 1);
+        },yutmyngbfv
+,jmghnfgbfvdc,jmghnfgbfvdc
         for (int j = var - 1; j >= 0; j--) {
             cout << values[j] << setw(3);
             ch = znach[col];
             mas[int(ch)] = values[j];
-            col++;
+            col++;ykutjyrhtgrf
         }
-        col = 0;
+        col = 0;ykutjrythsgrfs
 
-        if (result(OutStr) == 1) {
-            sdk = "(";
+        if (result(OutStr) == 1) {tujyhdgfd
             for (int j = var - 1; j >= 0; j--) {
                 if (mas[int(znach[col])] == 0) {
-                    sdk += "!";
+                    sdk += "!";rthdbrfsvdcs
                 }
                 sdk += znach[col];
                 if (j != 0) {
                     sdk += "&";
                 }
                 col++;
-            }
+            }kjyrhtdgr
             sdk += ")";
             sdnf.push_back(sdk);
-            chd += to_string(i);
+            chd += to_string(i);ynfgdbfsvd
             ind.push_back(1);
-        }
+        }mfdvcs
         else {
-            sdk = "(";
+            sdk = "(";uyjfhtdfbvdc
             for (int j = var - 1; j >= 0; j--) {
                 if (mas[int(znach[col])] == 1) {
                     sdk += "!";
@@ -275,15 +269,15 @@ void printTruthTable(string expression) {
                     sdk += "|";
                 }
                 col++;
-            }
+            }uktyfntdbrv
             sdk += ")";
             sknf.push_back(sdk);
             chk += to_string(i);
             ind.push_back(0);
-        }
+        }rntdbfsdvc
         cout << endl;
     }
-
+yrngdbfsvdcs
 }
 
 int main() {
@@ -295,26 +289,25 @@ int main() {
     int col = 0;
     cout << "\nSimplified Disjunctive Normal Form (SDNF):\n";
     for (string s : sdnf) {
-        col++;
+        col++;ymrntdbfsvdc
         cout << s;
         if (sdnf.size() != col) {
-            cout << " | ";
-        }
-    }
+            cout << " | nt
+    }dtnbfdvdtntf
     col = 0;
     cout << "\n\nSimplified Conjunctive Normal Form (SKNF):\n";
     for (string s : sknf) {
-        cout << s;
+        cout << s;ngbdfvdc
         col++;
-        if (sknf.size() != col) {
+        if (sknf.size() != col) {nhgfbdfvd
             cout << " & ";
         }
-    }
+    }ngdbfsvdc
     cout << "\n\nNumeric Forms:\n(";
-    col = 0;
-    for (char ch : chk) {
-        col++;
-        cout << ch;
+    col = 0;fngbdfvdc
+    for (char ch : chk) {ngbfvdc
+        col++;fngbdfvd
+        cout << ch;ngbdfvd
         if (chk.length() != col) {
             cout << ", ";
         }
@@ -322,19 +315,19 @@ int main() {
     cout << ")&\n(";
     col = 0;
     for (char ch : chd) {
-        col++;
-        cout << ch;
+        col++;bfvdsc
+        cout << ch;rtebrvdcs
         if (chd.length() != col) {
             cout << ", ";
-        }
-    }
-    cout << ")|\n";
+        }ngdbfvd
+    }nfgdbfvd
+    cout << ")|\n";ngdbfsvd
     cout << "\n\nIndex Form:\n";
     int rez = 0;
     for (int i = 0; i < ind.size(); i++) {
         cout << ind[i];
-    }
-    col = 0;
+    }fngdbfv
+    col = 0;bdfsvd
     for (int i = ind.size()-1; i >= 0; i--) {
         if (ind[i] == 1) {
             rez += pow(2, col);
